@@ -37,7 +37,7 @@ GO
    TABLA: pasajeros
 ================================ */
 CREATE TABLE pasajeros (
-    id_pasajero INT IDENTITY(1,1) PRIMARY KEY,
+    id_pasajero  VARCHAR(50) PRIMARY KEY,
     genero VARCHAR(10),
     edad INT,
     nacionalidad VARCHAR(50)
@@ -79,7 +79,7 @@ GO
 ================================ */
 CREATE TABLE reservas (
     id_reserva INT IDENTITY(1,1) PRIMARY KEY,
-    id_pasajero INT NOT NULL,  -- Cambiado de VARCHAR(50) a INT
+    id_pasajero VARCHAR(50) NOT NULL,  
     id_vuelo INT NOT NULL,
     fecha_hora_reserva DATETIME2,
     clase_cabina VARCHAR(20),
@@ -155,3 +155,4 @@ DELETE FROM aerolineas;
 
 SELECT COUNT(*) FROM pasajeros;
 
+ALTER TABLE pasajeros ADD passenger_uuid VARCHAR(50);

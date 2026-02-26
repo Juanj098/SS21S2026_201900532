@@ -94,8 +94,9 @@ try:
     #  insertar pasajeros
     for _, r in df.iterrows():
         cursor.execute("""
-            INSERT INTO pasajeros (genero, edad, nacionalidad) VALUES (?,?,?)
+            INSERT INTO pasajeros (id_pasajero, genero, edad, nacionalidad) VALUES (?,?,?,?)
         """,
+            r["passenger_id"],
             r["passenger_gender"],
             int(r["passenger_age"]),
             r["passenger_nationality"]
@@ -128,11 +129,14 @@ try:
 
     cursor.execute("SELECT id_aerolinea, codigo_aerolinea FROM aerolineas")
     aerolinea_map = {row[1]: row[0] for row in cursor.fetchall()}
-     
+
+    vuelo_map = {}
+    
     # insertar vuelos
     for _, r in df.iterrows():
         try:
-            cursor.execute("""
+            cursor.execute(
+                """
                 INSERT INTO vuelos (
                            id_registro, 
                            id_aerolinea, 
@@ -144,8 +148,8 @@ try:
                            duracion_minutos,
                            estado_vuelo,
                            tipo_aeronave
-                        ) VALUES (?,?,?,?,?,?,?,?,?,?)
-            """, 
+                        ) OUTPUT INSERTED.id_vuelo VALUES (?,?,?,?,?,?,?,?,?,?)
+                """, 
             r["record_id"],
             aerolinea_map.get(str(r["airline_code"]).strip().upper()),
             r["flight_number"],
@@ -156,6 +160,33 @@ try:
             int(r["duration_min"]),
             r["status"],
             r["aircraft_type"]
+            )
+            id_vuelo = cursor.fetchone()[0]
+            vuelo_map[int(r["record_id"])] = id_vuelo
+        except Exception as ex:
+            print(ex)
+    cursor.commit()
+
+    #registro reserva
+    for _, r in df.iterrows():
+        try:
+            cursor.execute(
+                """
+                INSERT INTO reservas (
+                    id_pasajero,
+                    id_vuelo,
+                    fecha_hora_reserva,
+                    clase_cabina,
+                    asiento,
+                    canal_venta
+                ) VALUES (?,?,?,?,?,?)
+                """,
+                str(r["passenger_id"]),
+                vuelo_map.get(int(r["record_id"])),
+                r["booking_datetime"],
+                r["cabin_class"],
+                r["seat"],
+                r["sales_channel"]
             )
         except Exception as ex:
             print(ex)
