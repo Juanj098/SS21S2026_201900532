@@ -137,6 +137,8 @@ SELECT * FROM aerolineas;
 
 SELECT * FROM aeropuertos;
 
+SELECT * FROM vuelos;
+
 DELETE FROM aerolineas;
 DELETE FROM pasajeros;
 
@@ -152,3 +154,4 @@ DELETE FROM aeropuertos;
 DELETE FROM aerolineas;
 
 SELECT COUNT(*) FROM pasajeros;
+

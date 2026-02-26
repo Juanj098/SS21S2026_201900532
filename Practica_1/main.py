@@ -36,10 +36,11 @@ df["booking_datetime"] = pd.to_datetime(df["booking_datetime"], format="mixed", 
 df["airline_code"] = df["airline_code"].str.strip().str.upper()
 df["airline_name"] = df["airline_name"].str.strip()
 airline_unique = df[["airline_code", "airline_name"]].drop_duplicates(subset=['airline_code']) 
-
+df.dropna(subset=["origin_airport", "destination_airport"], inplace=True)
 df["origin_airport"] = df["origin_airport"].str.strip().str.upper()
 df["destination_airport"] = df["destination_airport"].str.strip().str.upper()
 airport_unique = pd.concat([df["origin_airport"],df["destination_airport"]]).drop_duplicates().reset_index(drop=True)
+
 
 
 print("--------------------")
@@ -110,12 +111,52 @@ try:
         except Exception as ex:
             print(ex)
 
+    # insertar aeropuertos
     for r in airport_unique:
         try:
             cursor.execute("""
                 INSERT INTO aeropuertos (codigo_aeropuerto) VALUES (?)
             """,
             r)
+        except Exception as ex:
+            print(ex)
+
+    cursor.commit()
+
+    cursor.execute("SELECT id_aeropuerto, codigo_aeropuerto FROM aeropuertos")
+    aeropuerto_map = {row[1]: row[0] for row in cursor.fetchall()}
+
+    cursor.execute("SELECT id_aerolinea, codigo_aerolinea FROM aerolineas")
+    aerolinea_map = {row[1]: row[0] for row in cursor.fetchall()}
+     
+    # insertar vuelos
+    for _, r in df.iterrows():
+        try:
+            cursor.execute("""
+                INSERT INTO vuelos (
+                           id_registro, 
+                           id_aerolinea, 
+                           numero_vuelo, 
+                           id_aeropuerto_origen, 
+                           id_aeropuerto_destino,
+                           fecha_hora_salida,
+                           fecha_hora_llegada,
+                           duracion_minutos,
+                           estado_vuelo,
+                           tipo_aeronave
+                        ) VALUES (?,?,?,?,?,?,?,?,?,?)
+            """, 
+            r["record_id"],
+            aerolinea_map.get(str(r["airline_code"]).strip().upper()),
+            r["flight_number"],
+            aeropuerto_map.get(str(r["origin_airport"]).strip().upper()),
+            aeropuerto_map.get(str(r["destination_airport"]).strip().upper()),
+            r["departure_datetime"],
+            r["arrival_datetime"],
+            int(r["duration_min"]),
+            r["status"],
+            r["aircraft_type"]
+            )
         except Exception as ex:
             print(ex)
 
