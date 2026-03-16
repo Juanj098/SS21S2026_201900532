@@ -139,6 +139,13 @@ SELECT * FROM aeropuertos;
 
 SELECT * FROM vuelos;
 
+SELECT * FROM reservas;
+
+SELECT * FROM pagos;
+
+SELECT * FROM equipaje;
+
+
 DELETE FROM aerolineas;
 DELETE FROM pasajeros;
 
@@ -156,3 +163,28 @@ DELETE FROM aerolineas;
 SELECT COUNT(*) FROM pasajeros;
 
 ALTER TABLE pasajeros ADD passenger_uuid VARCHAR(50);
+
+
+SELECT
+    a.nombre_aerolinea,
+    COUNT(pg.id_pago)                                AS total_boletos,
+    ROUND(SUM(pg.precio_estimado_usd), 2)            AS ingreso_total_usd,
+    ROUND(AVG(pg.precio_estimado_usd), 2)            AS precio_promedio_usd,
+    ROUND(MIN(pg.precio_estimado_usd), 2)            AS precio_minimo_usd,
+    ROUND(MAX(pg.precio_estimado_usd), 2)            AS precio_maximo_usd
+FROM pagos pg
+JOIN reservas r  ON pg.id_reserva  = r.id_reserva
+JOIN vuelos v    ON r.id_vuelo     = v.id_vuelo
+JOIN aerolineas a ON v.id_aerolinea = a.id_aerolinea
+GROUP BY a.nombre_aerolinea
+ORDER BY ingreso_total_usd DESC;
+GO
+
+
+
+        SELECT genero, COUNT(*) AS total,
+               ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (), 2) AS porcentaje
+        FROM pasajeros
+        GROUP BY genero
+
+SELECT * FROM vuelos;
