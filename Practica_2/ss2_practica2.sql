@@ -107,3 +107,6 @@ CREATE TABLE Fact_Reservas (
     FOREIGN KEY (arrival_date_id)    
 	REFERENCES Dim_Date(date_id)
 );
+
+SELECT * FROM Fact_Reservas;
+SELECT * FROM Dim_Flight;
