@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\juanj\\OneDrive\\Escritorio\\Semi2\\SS21S2026_201900532\\proyecto 1\\ProyectoMultidimensional1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5904F15B-A7CC-ED18-16A8-35B9C28253B6}|ProyectoMultidimensional1\\ProyectoMultidimensional1.dwproj|C:\\Users\\juanj\\OneDrive\\Escritorio\\Semi2\\SS21S2026_201900532\\proyecto 1\\ProyectoMultidimensional1\\ProyectoMultidimensional1\\Dim Cliente.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
-      "RelativeMoniker": "D:0:0:{5904F15B-A7CC-ED18-16A8-35B9C28253B6}|ProyectoMultidimensional1\\ProyectoMultidimensional1.dwproj|solutionrelative:ProyectoMultidimensional1\\Dim Cliente.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5904F15B-A7CC-ED18-16A8-35B9C28253B6}|ProyectoMultidimensional1\\ProyectoMultidimensional1.dwproj|C:\\Users\\juanj\\OneDrive\\Escritorio\\Semi2\\SS21S2026_201900532\\proyecto 1\\ProyectoMultidimensional1\\ProyectoMultidimensional1\\P1 201900532 Ss2.cube||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
       "RelativeMoniker": "D:0:0:{5904F15B-A7CC-ED18-16A8-35B9C28253B6}|ProyectoMultidimensional1\\ProyectoMultidimensional1.dwproj|solutionrelative:ProyectoMultidimensional1\\P1 201900532 Ss2.cube||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
     }
@@ -23,18 +19,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Dim Cliente.dim [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\juanj\\OneDrive\\Escritorio\\Semi2\\SS21S2026_201900532\\proyecto 1\\ProyectoMultidimensional1\\ProyectoMultidimensional1\\Dim Cliente.dim",
-              "RelativeDocumentMoniker": "ProyectoMultidimensional1\\Dim Cliente.dim",
-              "ToolTip": "C:\\Users\\juanj\\OneDrive\\Escritorio\\Semi2\\SS21S2026_201900532\\proyecto 1\\ProyectoMultidimensional1\\ProyectoMultidimensional1\\Dim Cliente.dim [Dise\u00F1o]",
-              "RelativeToolTip": "ProyectoMultidimensional1\\Dim Cliente.dim [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-04-09T04:31:14.055Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "P1 201900532 Ss2.cube [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\juanj\\OneDrive\\Escritorio\\Semi2\\SS21S2026_201900532\\proyecto 1\\ProyectoMultidimensional1\\ProyectoMultidimensional1\\P1 201900532 Ss2.cube",
               "RelativeDocumentMoniker": "ProyectoMultidimensional1\\P1 201900532 Ss2.cube",
