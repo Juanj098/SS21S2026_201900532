@@ -6,10 +6,71 @@
     <Name>ProyectoMultidimensional1.database</Name>
     <FullPath>ProyectoMultidimensional1.database</FullPath>
   </Database>
+  <Cubes>
+    <ProjectItem>
+      <Name>P1 201900532 Ss2.cube</Name>
+      <FullPath>P1 201900532 Ss2.cube</FullPath>
+      <Dependencies>
+        <ProjectItem>
+          <Name>P1 201900532 Ss2.partitions</Name>
+          <FullPath>P1 201900532 Ss2.partitions</FullPath>
+        </ProjectItem>
+      </Dependencies>
+    </ProjectItem>
+  </Cubes>
+  <Dimensions>
+    <ProjectItem>
+      <Name>Dim Cliente.dim</Name>
+      <FullPath>Dim Cliente.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Dim Localizacion.dim</Name>
+      <FullPath>Dim Localizacion.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Dim Fecha.dim</Name>
+      <FullPath>Dim Fecha.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Dim Producto.dim</Name>
+      <FullPath>Dim Producto.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Dim Canal.dim</Name>
+      <FullPath>Dim Canal.dim</FullPath>
+    </ProjectItem>
+  </Dimensions>
+  <DataSources>
+    <ProjectItem>
+      <Name>P1 201900532 Ss2.ds</Name>
+      <FullPath>P1 201900532 Ss2.ds</FullPath>
+    </ProjectItem>
+  </DataSources>
+  <DataSourceViews>
+    <ProjectItem>
+      <Name>P1 201900532 Ss2.dsv</Name>
+      <FullPath>P1 201900532 Ss2.dsv</FullPath>
+    </ProjectItem>
+  </DataSourceViews>
   <Configurations>
     <Configuration>
       <Name>Development</Name>
-      <Options />
+      <Options>
+        <ConnectionMappings>
+          <ConfigurationSetting>
+            <Id>P1 201900532 Ss2</Id>
+            <Name>P1 201900532 Ss2</Name>
+            <Value xsi:type="xsd:string">Provider=SQLOLEDB.1;Data Source=JGERAARDI;Integrated Security=SSPI;Initial Catalog=P1_201900532_ss2</Value>
+          </ConfigurationSetting>
+        </ConnectionMappings>
+        <ConnectionSecurityMappings>
+          <ConfigurationSetting>
+            <Id>P1 201900532 Ss2</Id>
+            <Name>P1 201900532 Ss2</Name>
+            <Value xsi:type="xsd:int">0</Value>
+          </ConfigurationSetting>
+        </ConnectionSecurityMappings>
+      </Options>
     </Configuration>
   </Configurations>
 </Project>
